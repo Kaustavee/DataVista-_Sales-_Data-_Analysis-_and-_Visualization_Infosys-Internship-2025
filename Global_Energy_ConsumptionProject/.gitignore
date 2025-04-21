@@ -1,0 +1,29 @@
+venv/
+# Ignore Python virtual environment
+venv/
+env/
+
+# Ignore cached files
+__pycache__/
+*.pyc
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore large data/models
+*.h5
+*.pkl
+*.pt
+*.ckpt
+*.zip
+*.tar.gz
+*.npz
+datasets/
+models/
+*.csv
+# Ignore pywrap and compiled libs anywhere
+**/pywrap*
+*.so
+*.pyd
+# Ignore .git directories inside subfolders
+Global_Energy_ConsumptionProject/.git

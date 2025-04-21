@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Future Energy Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .plot-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #212529; /* Dark background for plot container */
+        }
+        .plot-container h5 {
+            color: #f8f9fa; /* Light text for heading */
+        }
+        .plot-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Energy App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Visualizations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/predict">Predictions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="text-center mb-4">Predict Future Energy Consumption</h2>
+
+    <form method="POST" class="bg-secondary p-4 rounded shadow">
+        <div class="mb-3">
+            <label for="prediction_country" class="form-label">Select Country</label>
+            <select class="form-select" name="prediction_country" id="prediction_country" required>
+                {% for country in countries %}
+                    <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="prediction_year" class="form-label">Enter Prediction Year (After 2023)</label>
+            <input type="number" name="prediction_year" id="prediction_year" class="form-control"
+                   min="2024" required>
+        </div>
+        <button type="submit" class="btn btn-warning">Predict</button>
+    </form>
+
+    {% if future_energy_prediction %}
+        <div class="alert alert-info mt-4">
+            <h5>Predicted Total Energy Consumption (EJ):</h5>
+            <p class="fw-bold fs-4">{{ future_energy_prediction | round(2) }}</p>
+        </div>
+    {% endif %}
+
+    {% if prediction_plot %}
+    <div class="plot-container mt-4">
+        <h5>Prediction Visualization</h5>
+        <img src="data:image/png;base64,{{ prediction_plot }}" alt="Prediction Bar Chart" class="plot-image">
+    </div>
+    {% endif %}
+
+    {% if historical_plot %}
+    <div class="plot-container mt-4">
+        <h5>Historical Trend and Prediction</h5>
+        <img src="data:image/png;base64,{{ historical_plot }}" alt="Historical Trend Line Chart" class="plot-image">
+    </div>
+    {% endif %}
+
+    {% if comparison_plot %}
+    <div class="plot-container mt-4">
+        <h5>Comparison of Predictions for {{ predicted_year }}</h5>
+        <img src="data:image/png;base64,{{ comparison_plot }}" alt="Comparison Bar Chart" class="plot-image">
+    </div>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

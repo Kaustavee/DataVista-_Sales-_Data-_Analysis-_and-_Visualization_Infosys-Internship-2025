@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Energy Visualization (Dark Theme)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .form-control, .form-select {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #444;
+        }
+        .form-control:focus, .form-select:focus {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        .navbar {
+            background-color: #0d6efd;
+        }
+        .btn-primary, .btn-success {
+            border-radius: 30px;
+        }
+        .form-box {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #00000070;
+        }
+        .img-fluid {
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00000060;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">⚡ Energy App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Visualizations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/predict">Predictions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container mt-4">
+    <h2 class="text-center mb-4">📊 Energy Consumption Visualizations</h2>
+
+    <!-- Multi Fuel Form -->
+    <form method="POST" class="form-box mb-4">
+        <h5>Select Country (Multi-Year, All Fuels)</h5>
+        <div class="mb-3">
+            <select class="form-select" name="multi_fuel_country" required>
+                {% for country in countries %}
+                    <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Generate Multi-Fuel Plot</button>
+    </form>
+
+    {% if multi_fuel_plot %}
+        <img src="data:image/png;base64,{{ multi_fuel_plot }}" class="img-fluid mb-5">
+    {% endif %}
+
+    <!-- Yearly Fuel Form -->
+    <form method="POST" class="form-box mb-4">
+        <h5>Select Country and Year (Single-Year)</h5>
+        <div class="mb-3">
+            <select class="form-select" name="yearly_fuel_country" required>
+                {% for country in countries %}
+                    <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" name="year" required>
+                {% for year in years %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Generate Yearly Fuel Plot</button>
+    </form>
+
+    {% if yearly_fuel_plot %}
+        <img src="data:image/png;base64,{{ yearly_fuel_plot }}" class="img-fluid mb-5">
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
