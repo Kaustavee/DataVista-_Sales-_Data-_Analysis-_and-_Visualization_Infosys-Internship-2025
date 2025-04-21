@@ -1,22 +1,67 @@
-# DataVista-_Sales-_Data-_Analysis-_and-_Visualization_Infosys-Internship-2025
-# DataVista-Sales-Data-Analysis-and-Visualization---Infosys-Internship-2025
+# 💡 DataVista: Sales Data Analysis and Visualization  
+## 🏢 Infosys Internship Project 2025
 
+---
 
-
-# Energy Consumption Web Application
+## 🌍 Energy Consumption Web Application
 
 This web application visualizes and predicts energy consumption data. It allows users to:
 
-* **Visualize historical energy consumption:** View energy consumption by fuel type for different countries over the years.
-* **Predict future energy consumption:** Use a machine learning model to predict energy consumption for a selected country in a future year.
+- **🔎 Visualize historical energy consumption:** View energy consumption by fuel type for different countries over the years.  
+- **📈 Predict future energy consumption:** Use a machine learning model to predict energy consumption for a selected country in a future year.
 
-##   Features
+---
 
-* **Interactive visualizations:** Displays energy consumption data using Matplotlib, including line charts and bar charts.
-* **Future energy prediction:** Predicts energy consumption for a selected country and year using a Random Forest Regressor model.
-* **Flask web framework:** Built using Flask to handle routing, form submissions, and rendering of HTML templates.
-* **Data handling:** Reads energy consumption data from CSV files using Pandas.
-* **Virtual environment:** Uses a virtual environment to manage project dependencies.
+## 🚀 Key Features
+
+---
+
+### 🖼️ **Interactive Visualizations**
+
+Displays energy consumption data using Matplotlib, including line charts and bar charts.
+
+<p align="center">
+  <img src="assets/images/Screenshot%20(255).png" alt="Interactive Visualization 1" width="600"/>
+  <br><br>
+  <img src="assets/images/Screenshot%20(256).png" alt="Interactive Visualization 2" width="600"/>
+</p>
+
+---
+
+### 🔮 **Future Energy Prediction**
+
+Predicts energy consumption for a selected country and year using a Random Forest Regressor model.
+
+<p align="center">
+  <img src="assets/images/Screenshot%20(258).png" alt="Prediction Input" width="600"/>
+</p>
+
+---
+
+### 🌐 **Flask Web Framework**
+
+Built using Flask to handle routing, form submissions, and rendering of HTML templates.
+
+<p align="center">
+  <img src="assets/images/Screenshot%20(254).png" alt="Flask Framework" width="600"/>
+</p>
+
+---
+
+### 🧮 **Data Handling**
+
+Reads energy consumption data from CSV files using Pandas.
+
+---
+
+### 🧪 **Virtual Environment**
+
+Uses a virtual environment to manage project dependencies.
+
+
+
+ 
+
 
 ##   Dependencies
 
@@ -93,9 +138,27 @@ The application has two main sections:
     * Select a country to visualize its energy consumption by fuel type over the years.
     * Select a country and year to see a bar chart of energy consumption by fuel type for that specific year.
 
-###   2. Predictions
+### 📈 2. **Predictions Page (`/predict`)**
 
-* **Predictions Page (`/predict`):**
-    * Select a country and a future year (after 2023) to predict its total energy consumption for that year.
-    * The application will display the predicted energy consumption and show a plot.
-    * The application also shows a comparison bar chart of predictions for all countries for the selected future year.
+- Select a **country** and a **future year (after 2023)** to predict its total energy consumption.
+
+<p align="center">
+  <img src="assets/images/Screenshot%20(258).png" alt="Prediction Input Page" width="600"/>
+</p>
+
+---
+
+- The application will display the **predicted energy consumption** and show a corresponding plot.
+
+<p align="center">
+  <img src="assets/images/Screenshot%20(259).png" alt="Prediction Output Plot" width="600"/>
+</p>
+
+---
+
+- It will also show a **comparison bar chart** of predictions for all countries for the selected future year.
+
+<p align="center">
+  <img src="assets/images/Screenshot%20(260).png" alt="Country Comparison Chart" width="600"/>
+</p>
+
